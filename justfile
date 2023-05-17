@@ -10,4 +10,7 @@ mods-dev:
 mods-tauri:
   cargo-modules generate tree -p rs_tauri --types --traits --fns
 
-mods: mods-tauri && mods-dev
+mods-shell:
+  cargo-modules generate tree -p rs_shell --types --traits --fns
+
+mods: mods-tauri && mods-dev mods-shell

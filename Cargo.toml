@@ -2,4 +2,5 @@
 members = [
   "rs_tauri",
   "rs_dev",
+  "rs_shell",
 ]
