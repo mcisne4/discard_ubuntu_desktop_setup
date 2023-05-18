@@ -8,12 +8,14 @@ fn greet(name: &str) -> String {
 }
 
 use rs_shell;
+mod shell_cmds;
+use shell_cmds::*;
 
 fn main() {
     rs_shell::hello();
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![greet, env_shell])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
