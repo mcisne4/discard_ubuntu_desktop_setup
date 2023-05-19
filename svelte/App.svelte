@@ -20,6 +20,8 @@
   <p>Click on the Tauri, Vite, and Svelte logos to learn more.</p>
 
   <Dev cmd="env_shell" />
+  <Dev cmd="is_bash_installed" />
+  <Dev cmd="is_zsh_installed" />
 </main>
 
 <style>

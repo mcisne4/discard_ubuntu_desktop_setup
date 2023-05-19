@@ -96,7 +96,7 @@
 
 <style>
   h2 {
-    margin: 0.25rem auto;
+    margin: 0.75rem auto 0.25rem;
     padding: 0;
   }
   h2 .title {

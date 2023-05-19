@@ -8,6 +8,7 @@ fn greet(name: &str) -> String {
 }
 
 use rs_shell;
+
 mod shell_cmds;
 use shell_cmds::*;
 
@@ -15,7 +16,12 @@ fn main() {
     rs_shell::hello();
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet, env_shell])
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            env_shell,
+            is_bash_installed,
+            is_zsh_installed
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
