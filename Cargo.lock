@@ -2090,6 +2090,7 @@ name = "rs_dev"
 version = "0.1.0"
 dependencies = [
  "rs_shell",
+ "rs_sqlite_db",
 ]
 
 [[package]]
@@ -2098,6 +2099,10 @@ version = "0.1.0"
 dependencies = [
  "run_script",
 ]
+
+[[package]]
+name = "rs_sqlite_db"
+version = "0.1.0"
 
 [[package]]
 name = "rs_tauri"
