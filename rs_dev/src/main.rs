@@ -1,3 +1,5 @@
+use std::env;
+
 use rs_shell;
 use rs_sqlite_db;
 
@@ -29,6 +31,25 @@ fn main() {
     // === CRATE: 'rs_sqlite_db' === //
 
     rs_sqlite_db::hello();
+
+    let mut db_dir = env::current_dir().unwrap();
+    db_dir.push("db");
+
+    match rs_sqlite_db::init(db_dir) {
+        Ok(_) => println!("Initialization completed successfully"),
+        Err(e) => println!("Initialization Error:\n  {:?}", e),
+    }
+
+    // match rs_sqlite_db::connect(db_dir) {
+    //     Ok(db) => {
+    //         println!("Connection Successful");
+    //         match db.close() {
+    //             Ok(_) => println!("Connection closed successfully"),
+    //             Err(e) => println!("Error closing connection:\n  {:?}", e),
+    //         }
+    //     }
+    //     Err(e) => println!("Connection Error:\n  {}", e),
+    // };
 
     println!("");
 }
