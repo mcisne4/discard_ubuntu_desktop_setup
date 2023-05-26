@@ -1,6 +1,6 @@
 use rusqlite::Connection;
 
-pub fn table_exists(conn: &Connection) -> Result<bool, String> {
+pub fn check_table_exists(conn: &Connection) -> Result<bool, String> {
     let name = conn.query_row(
         "SELECT name
     FROM sqlite_master
