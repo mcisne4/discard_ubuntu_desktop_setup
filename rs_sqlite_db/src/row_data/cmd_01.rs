@@ -1,7 +1,7 @@
-use super::_types::RowArgs;
+use super::_types::RowData;
 
-pub fn data() -> RowArgs {
-    RowArgs::from(
+pub fn row_data() -> RowData {
+    RowData::new(
         "cmd_001",
         "Command 001",
         "Description for 'Command 001'",

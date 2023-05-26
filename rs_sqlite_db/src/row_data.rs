@@ -1,13 +1,17 @@
 mod _types;
-use _types::{Row, Rows};
+pub use _types::RowData;
 
-mod is_bash_installed;
+mod cmd_01;
+mod cmd_02;
+mod cmd_03;
+mod cmd_04;
 
-pub fn get_row_data() -> Vec<Row> {
-    let rows = Rows::from_args(vec![
-        //
-        is_bash_installed::data(),
-    ]);
-
-    rows.rows
+pub fn get_row_data() -> Vec<RowData> {
+    let rows: Vec<RowData> = vec![
+        cmd_01::row_data(),
+        cmd_02::row_data(),
+        cmd_03::row_data(),
+        cmd_04::row_data(),
+    ];
+    rows
 }

@@ -15,3 +15,6 @@ pub use table_drop::table_drop;
 
 mod create_table;
 pub use create_table::create_table;
+
+mod insert_rows;
+pub use insert_rows::insert_rows;

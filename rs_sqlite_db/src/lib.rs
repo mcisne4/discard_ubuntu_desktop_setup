@@ -1,11 +1,13 @@
+use rusqlite::Connection;
 use std::path::PathBuf;
 
 mod db;
 use db::{
     check_table_columns, check_table_exists, check_table_row_count, connect, create_table,
-    table_drop,
+    insert_rows, table_drop,
 };
-use rusqlite::Connection;
+mod row_data;
+use row_data::get_row_data;
 
 pub fn hello() {
     println!("Hello from 'rs_sqlite_db'");
@@ -34,8 +36,18 @@ pub fn init(db_dir: PathBuf) -> Result<(), String> {
         true => {
             create_table(&conn)?;
             println!("TABLE CREATED");
+
+            let rows = get_row_data();
+            insert_rows(&conn, rows)?;
+            println!("ROWS ADDED");
         }
         false => (),
+    }
+
+    // --- Drop Connection --- //
+    match conn.close() {
+        Ok(_) => println!("Connection closed"),
+        Err((_conn, e)) => print!("Unable to close connection:\n  {}", e.to_string()),
     }
 
     Ok(())
