@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 mod db;
-use db::{check_table_columns, check_table_row_count, connect, table_exists};
+use db::{check_table_columns, check_table_row_count, connect, table_drop, table_exists};
 
 pub fn hello() {
     println!("Hello from 'rs_sqlite_db'");

@@ -9,3 +9,6 @@ pub use check_table_columns::check_table_columns;
 
 mod check_table_row_count;
 pub use check_table_row_count::check_table_row_count;
+
+mod table_drop;
+pub use table_drop::table_drop;
