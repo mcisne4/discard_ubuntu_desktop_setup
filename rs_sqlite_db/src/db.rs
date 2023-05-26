@@ -12,3 +12,6 @@ pub use check_table_row_count::check_table_row_count;
 
 mod table_drop;
 pub use table_drop::table_drop;
+
+mod create_table;
+pub use create_table::create_table;
