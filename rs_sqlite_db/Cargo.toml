@@ -1,10 +1,9 @@
 [package]
-name = "rs_dev"
+name = "rs_sqlite_db"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rs_shell = { path = "../rs_shell" }
-rs_sqlite_db = { path = "../rs_sqlite_db" }
+rusqlite = { version = "0.29.0", features = ["bundled"] }

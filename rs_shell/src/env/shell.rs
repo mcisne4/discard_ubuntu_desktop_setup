@@ -1,8 +1,6 @@
 use std::env;
-// use tauri;
 
-// #[tauri::command]
-pub fn get_shell() -> Result<String, String> {
+pub fn shell() -> Result<String, String> {
     let key = "SHELL";
     let mut shell = env::var(key).map_err(|e| format!("$SHELL: {}", e))?;
 

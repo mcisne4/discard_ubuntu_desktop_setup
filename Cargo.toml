@@ -3,4 +3,5 @@ members = [
   "rs_tauri",
   "rs_dev",
   "rs_shell",
+  "rs_sqlite_db",
 ]
