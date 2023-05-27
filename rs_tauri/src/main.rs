@@ -19,8 +19,8 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             greet,
             env_shell,
-            is_bash_installed,
-            is_zsh_installed
+            is_installed_bash,
+            is_installed_zsh
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
