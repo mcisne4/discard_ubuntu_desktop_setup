@@ -5,6 +5,7 @@ fn main() {
     println!("========= Hello from 'rs_dev' =========");
     println!("=======================================\n");
 
-    mods::rs_shell::dev(true);
-    mods::rs_sqlite_db::dev(true);
+    mods::rs_logs::dev(true);
+    mods::rs_shell::dev(false);
+    mods::rs_sqlite_db::dev(false);
 }

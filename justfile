@@ -1,5 +1,5 @@
 # === DEV === #
-dev: build-shell && build-sqlite-db build-dev
+dev: build-logs && build-shell build-sqlite-db build-dev
   cd rs_dev && cargo watch -x run
 
 # === BUILD SCRIPTS === #
@@ -18,8 +18,11 @@ build-shell:
 build-sqlite-db:
   cargo build -p rs_sqlite_db
 
+build-logs:
+  cargo build -p rs_logs
+
 # === MODULE TREE === #
-mods: mods-tauri && mods-dev mods-shell mods-sqlite-db
+mods: mods-tauri && mods-dev mods-shell mods-sqlite-db mods-logs
 
 mods-dev:
   cargo-modules generate tree -p rs_dev --types --traits --fns
@@ -32,3 +35,6 @@ mods-shell:
 
 mods-sqlite-db:
   cargo-modules generate tree -p rs_sqlite_db --types --traits --fns
+
+mods-logs:
+  cargo-modules generate tree -p rs_logs --types --traits --fns
