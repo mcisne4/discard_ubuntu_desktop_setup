@@ -1,4 +1,4 @@
-use rs_logs::{init, log_error, log_error_from_map, log_info, log_warn};
+use rs_logs::{handle_map_error, init, log_error, log_info, log_warn};
 use std::env;
 
 use super::errors::LogError;
@@ -53,7 +53,7 @@ pub fn dev(run: bool) {
 
     fn failing_fn_handler() -> Result<(), String> {
         failing_fn().map_err(|e| {
-            log_error_from_map(
+            handle_map_error(
                 &e,
                 "rs_dev::rs_log",
                 "Catching an error with 'map_err()'",
