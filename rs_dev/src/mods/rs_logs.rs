@@ -1,7 +1,8 @@
-use rs_logs::{handle_map_error, init, log_error, log_info, log_warn};
+// use rs_logs::{handle_map_error, init, log_error, log_info, log_warn};
+use rs_logs::init;
 use std::env;
 
-use super::errors::LogError;
+// use super::errors::LogError;
 
 pub fn dev(run: bool) {
     if !run {
@@ -26,46 +27,58 @@ pub fn dev(run: bool) {
 
     // --- Writting Tests --- //
 
-    // ___ Log: INFO ___ //
-    let msg = "An info statement";
-    println!("Add 'INFO' log:\n  '{}'\n", msg);
-    log_info("rs_dev::rs_logs", msg);
+    // // ___ Log: INFO ___ //
+    // let msg = "An info statement";
+    // println!("Add 'INFO' log:\n  '{}'\n", msg);
+    // log_info("rs_dev::rs_logs", msg);
 
-    // ___ Log: WARNING ___ //
-    let msg = "A warning statement";
-    println!("Add 'warning' log:\n  '{}'\n", msg);
-    log_warn("rs_dev::rs_logs", msg);
+    // // ___ Log: WARNING ___ //
+    // let msg = "A warning statement";
+    // println!("Add 'warning' log:\n  '{}'\n", msg);
+    // log_warn("rs_dev::rs_logs", msg);
 
-    // ___ Log: ERROR ___ //
-    let cause = "The cause of the error";
-    let description = "The description for the error statement";
-    println!("Add 'error' log:\n  {}:\n    {}\n", cause, description);
-    log_error("rs_dev::rs_logs", cause, description);
+    // // ___ Log: ERROR ___ //
+    // let cause = "The cause of the error";
+    // let description = "The description for the error statement";
+    // println!("Add 'error' log:\n  {}:\n    {}\n", cause, description);
+    // log_error("rs_dev::rs_logs", cause, description);
 
     // ___ Log: ERROR Handler ___ //
-    fn failing_fn() -> Result<(), LogError> {
-        let fail = true;
-        match fail {
-            true => Err(LogError::AnError(String::from("forced fail function"))),
-            false => Ok(()),
-        }
-    }
+    // fn failing_fn() -> Result<(), LogError> {
+    //     let fail = true;
+    //     match fail {
+    //         true => Err(LogError::AnError(String::from("forced fail function"))),
+    //         false => Ok(()),
+    //     }
+    // }
 
-    fn failing_fn_handler() -> Result<(), String> {
-        failing_fn().map_err(|e| {
-            handle_map_error(
-                &e,
-                "rs_dev::rs_log",
-                "Catching an error with 'map_err()'",
-                Some("This is an intercepted error message"),
-            )
-        })?;
-        Ok(())
-    }
+    // fn failing_fn_handler() -> Result<(), String> {
+    //     failing_fn().map_err(|e| {
+    //         handle_map_error(
+    //             &e,
+    //             "rs_dev::rs_log",
+    //             "Catching an error with 'map_err()'",
+    //             Some("This is an intercepted error message"),
+    //         )
+    //     })?;
+    //     Ok(())
+    // }
 
-    println!("Add 'error' log from error handling:");
-    match failing_fn_handler() {
-        Ok(_) => (),
-        Err(e) => println!("  Handled Error:\n    {}\n", e),
-    }
+    // println!("Add 'error' log from error handling:");
+    // match failing_fn_handler() {
+    //     Ok(_) => (),
+    //     Err(e) => println!("  Handled Error:\n    {}\n", e),
+    // }
+
+    // current_date();
+
+    // match util::timestamp() {
+    //     Ok(timestampe) => println!("TIMESTAMP: '{}'\n", timestampe),
+    //     Err(e) => println!("{}\n", e),
+    // }
+
+    // match util::log_filename() {
+    //     Ok(filename) => println!("LOG FILENAME: '{}'\n", filename),
+    //     Err(e) => println!("{}\n", e),
+    // }
 }

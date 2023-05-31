@@ -8,4 +8,4 @@ edition = "2021"
 [dependencies]
 fern = "0.6.2"
 log = "0.4.17"
-humantime = "2.1.0"
+hifitime = "3.8.2"
