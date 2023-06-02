@@ -1421,6 +1421,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "lazy-regex"
+version = "2.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ff63c423c68ea6814b7da9e88ce585f793c87ddd9e78f646970891769c8235d4"
+dependencies = [
+ "lazy-regex-proc_macros",
+ "once_cell",
+ "regex",
+]
+
+[[package]]
+name = "lazy-regex-proc_macros"
+version = "2.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8edfc11b8f56ce85e207e62ea21557cfa09bb24a8f6b04ae181b086ff8611c22"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "regex",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2216,18 +2239,19 @@ checksum = "a5996294f19bd3aae0453a862ad728f60e6600695733dd5df01da90c54363a3c"
 name = "rs_dev"
 version = "0.1.0"
 dependencies = [
- "rs_logs",
+ "rs_logger",
  "rs_shell",
  "rs_sqlite_db",
  "thiserror",
 ]
 
 [[package]]
-name = "rs_logs"
+name = "rs_logger"
 version = "0.1.0"
 dependencies = [
  "fern",
  "hifitime",
+ "lazy-regex",
  "log",
 ]
 

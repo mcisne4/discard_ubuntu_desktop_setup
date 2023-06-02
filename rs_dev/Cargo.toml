@@ -8,5 +8,5 @@ edition = "2021"
 [dependencies]
 rs_shell = { path = "../rs_shell" }
 rs_sqlite_db = { path = "../rs_sqlite_db" }
-rs_logs = { path = "../rs_logs" }
+rs_logger = { path = "../rs_logger" }
 thiserror = "1.0.40"
