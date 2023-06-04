@@ -2,11 +2,13 @@ use rs_logger::{init, prune_log_files};
 use std::fs::write;
 use std::{env, path::PathBuf};
 
-pub fn startup_functions() {
+pub fn startup_functions(verbose: bool) {
     // --- Dev Logs Path --- //
     let mut log_files_dir = env::current_dir().unwrap();
     log_files_dir.push("dev_logs");
-    println!("Dev Logs Directory:\n  '{}'\n", &log_files_dir.display());
+    if verbose {
+        println!("Dev Logs Directory:\n  '{}'\n", &log_files_dir.display());
+    }
 
     // --- Init --- //
     match init(&log_files_dir) {
@@ -15,9 +17,10 @@ pub fn startup_functions() {
     }
 
     // --- Prune Old Log Files --- //
-    create_extra_log_files(&log_files_dir);
-
-    println!("Removing old log files\n");
+    if verbose {
+        create_extra_log_files(&log_files_dir);
+        println!("Removing old log files\n");
+    }
     prune_log_files(log_files_dir);
 }
 
