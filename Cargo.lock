@@ -2259,6 +2259,7 @@ dependencies = [
 name = "rs_shell"
 version = "0.1.0"
 dependencies = [
+ "rs_logger",
  "run_script",
 ]
 
