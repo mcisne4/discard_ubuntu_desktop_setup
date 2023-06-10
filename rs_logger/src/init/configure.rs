@@ -6,6 +6,7 @@ mod filename;
 mod timestamp;
 mod validate_dir;
 
+use crate::InfoLog;
 pub use errors::InitError;
 use filename::generate_filename;
 use timestamp::timestamp;
@@ -25,9 +26,11 @@ pub fn configure_logger(logs_dir: PathBuf) -> Result<(), InitError> {
                 message
             ))
         })
-        .chain(log_file(log_file_path).map_err(|e| InitError::ConfigLogFile(e))?)
+        .chain(log_file(&log_file_path).map_err(|e| InitError::ConfigLogFile(e))?)
         .apply()
         .map_err(|e| InitError::ConfigDispatch(e))?;
+
+    InfoLog::Id101101(log_file_path).log();
 
     Ok(())
 }

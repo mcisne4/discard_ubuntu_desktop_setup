@@ -5,3 +5,6 @@ mod init;
 pub use init::init;
 
 mod log_functions;
+
+mod log_main;
+pub use log_main::{ErrorLog, InfoLog, WarningLog};
