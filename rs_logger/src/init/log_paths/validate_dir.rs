@@ -1,4 +1,4 @@
-use super::errors::InitError;
+use super::super::InitError;
 use std::path::PathBuf;
 
 pub fn validate_logs_dir(logs_dir: PathBuf) -> Result<PathBuf, InitError> {

@@ -5,6 +5,9 @@ use std::path::PathBuf;
 pub enum InfoLog {
     Id000101,
     Id101101(PathBuf),
+    Id102101,
+    Id102102(PathBuf),
+    Id102103(usize),
 }
 impl InfoLog {
     pub fn log(self) {
@@ -21,6 +24,21 @@ impl InfoLog {
                     ),
                 );
             }
+            Self::Id102101 => info_log("102101", "Looking for old log files"),
+            Self::Id102102(extra_file) => info_log(
+                "102102",
+                format!(
+                    "Log file successfully dropped:\n\tLog File: '{}'",
+                    extra_file.display()
+                ),
+            ),
+            Self::Id102103(file_count) => info_log(
+                "102103",
+                format!(
+                    "Found {} log files. No files need to be dropped",
+                    file_count
+                ),
+            ),
         }
     }
 }

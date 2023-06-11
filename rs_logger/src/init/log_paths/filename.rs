@@ -1,4 +1,4 @@
-use super::errors::InitError;
+use super::super::InitError;
 use hifitime::prelude::{Epoch, Format, Formatter};
 use std::str::FromStr;
 

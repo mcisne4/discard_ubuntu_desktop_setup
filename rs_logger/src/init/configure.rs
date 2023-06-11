@@ -1,22 +1,13 @@
 use fern::{log_file, Dispatch};
 use std::path::PathBuf;
 
-mod errors;
-mod filename;
 mod timestamp;
-mod validate_dir;
 
+use super::InitError;
 use crate::InfoLog;
-pub use errors::InitError;
-use filename::generate_filename;
 use timestamp::timestamp;
-use validate_dir::validate_logs_dir;
 
-pub fn configure_logger(logs_dir: PathBuf) -> Result<(), InitError> {
-    let mut log_file_path = validate_logs_dir(logs_dir)?;
-    let filename = generate_filename()?;
-    log_file_path.push(filename);
-
+pub fn configure_logger(log_file_path: PathBuf) -> Result<(), InitError> {
     Dispatch::new()
         .format(|out, message, record| {
             out.finish(format_args!(
@@ -30,7 +21,7 @@ pub fn configure_logger(logs_dir: PathBuf) -> Result<(), InitError> {
         .apply()
         .map_err(|e| InitError::ConfigDispatch(e))?;
 
-    InfoLog::Id101101(log_file_path).log();
+    InfoLog::Id101101(log_file_path.to_owned()).log();
 
     Ok(())
 }

@@ -7,7 +7,7 @@ pub enum ErrorLog {
     Id000301,
 }
 impl ErrorLog {
-    pub fn log(self) -> String {
+    pub fn log(&self) -> String {
         match self {
             Self::Id000301 => {
                 error_log("000301", self.to_string());

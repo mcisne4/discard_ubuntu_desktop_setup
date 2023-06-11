@@ -56,6 +56,7 @@ where
     mod_path += match crate_and_module.as_str() {
         "000" => "rs_logger::example",
         "101" => "rs_logger::init::configure",
+        "102" => "rs_logger::init::remove_old_logs",
         _ => return Err(LogDetailsError::InvalidModPath),
     };
 
