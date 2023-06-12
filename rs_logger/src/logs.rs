@@ -29,6 +29,7 @@ use logger::Logger;
 /// ```
 pub enum Logs {
     Test,
+    RsLogger01,
 }
 impl Logs {
     /// Creates a **Logger** to write logs into a log file
@@ -46,6 +47,7 @@ impl Logs {
     pub fn as_logger(&self) -> Logger {
         match self {
             Self::Test => Logger::new(0, 0),
+            Self::RsLogger01 => Logger::new(1, 0),
         }
     }
 
@@ -93,6 +95,7 @@ impl Logs {
 
         let details = match crate_mod {
             0 => pre_details.add_src("rs_logger::example"),
+            100 => pre_details.add_src("rs_logger::configure_logger::remove_old_logs"),
 
             _ => return Err(LogDetailsError::InvalidModPath),
         };
