@@ -1,4 +1,26 @@
-use log::{error, info, warn};
+use log::{error as error_macro, info as info_macro, warn as warn_macro};
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum ReLoggerErrors {
+    #[error("Improper amount of crate and mod characters provided")]
+    InvalidCharLength,
+
+    #[error("")]
+}
+
+pub struct ReLogger(u8, u8);
+impl ReLogger {
+    pub fn new(crate_idx: u8, mod_idx: u8) -> Self {
+        Self(crate_idx, mod_idx)
+    }
+
+    pub fn from_str(crate_and_mod_chars: &str) -> Result<Self, ReLoggerErrors> {
+        if crate_and_mod_chars.len() != 3 {
+            return Err(ReLoggerErrors::InvalidCharLength);
+        }
+    }
+}
 
 /// Used to write data to a log file
 ///
@@ -73,12 +95,12 @@ impl Logger {
     /// logger.log_info("Adding an information entry");
     /// logger.log_info(String::from("Adding another entry"));
     /// ```
-    pub fn log_info<S>(&mut self, content: S)
+    pub fn log_info<S>(&mut self, idx: u8, content: S)
     where
         S: AsRef<str> + std::fmt::Display,
     {
         self.log_count += 1;
-        info!("{}] {}", self.get_log_id(1), content);
+        info_macro!("{}] {}", self.get_log_id(1), content);
     }
 
     /// Adds an 'WARN' entry to the log file
@@ -112,7 +134,7 @@ impl Logger {
         S: AsRef<str> + std::fmt::Display,
     {
         self.log_count += 1;
-        warn!("{}] {}", self.get_log_id(2), content);
+        warn_macro!("{}] {}", self.get_log_id(2), content);
     }
 
     /// Adds an 'ERROR' entry to the log file
@@ -146,6 +168,6 @@ impl Logger {
         S: AsRef<str> + std::fmt::Display,
     {
         self.log_count += 1;
-        error!("{}] {}", self.get_log_id(1), content);
+        error_macro!("{}] {}", self.get_log_id(1), content);
     }
 }
